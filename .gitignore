@@ -1,0 +1,7 @@
+/storage/inquiries/*.json
+/assets/img/projects/*
+!/assets/img/projects/.gitkeep
+/assets/img/blog/*
+!/assets/img/blog/.gitkeep
+.DS_Store
+Thumbs.db

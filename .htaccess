@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /sadafalbahr/
+
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+RewriteRule ^project/([a-z0-9-]+)/?$ project.php?slug=$1 [L,QSA]
+RewriteRule ^blog/([a-z0-9-]+)/?$ post.php?slug=$1 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-z0-9-]+)/?$ route.php?slug=$1 [L,QSA]
