@@ -26,7 +26,7 @@ $types = [
     <div class="section-head">
       <p class="eyebrow" style="color:var(--gold)">Carpet types &amp; colours</p>
       <h2>Feel the pile before you decide.</h2>
-      <p class="muted">Samples are in the shop. We help match colour to wallpaper, curtains and existing furniture so the floor does not fight the room.</p>
+      <p class="muted">Samples are in the shop. We help match colour to wallpaper, curtains and existing furniture so the floor does not fight the room. <a href="<?= e(sabPageHref('catalog')) ?>#carpets">Browse carpet designs in the catalogue</a>.</p>
     </div>
     <div class="catalog-grid">
       <?php foreach ($types as [$title, $text, $img]): ?>
@@ -56,6 +56,7 @@ $types = [
       </ul>
       <p>
         <a class="btn btn-gold" href="<?= e(sabPageHref('contact') . '?service=' . rawurlencode('Carpets & flooring')) ?>">Request a carpet quote</a>
+        <a class="btn btn-outline" href="<?= e(sabPageHref('catalog')) ?>#carpets">Catalogue</a>
       </p>
     </div>
   </div>

@@ -26,7 +26,7 @@ $styles = [
     <div class="section-head">
       <p class="eyebrow" style="color:var(--gold)">Curtain styles &amp; fabrics</p>
       <h2>Choose the drop, then the cloth.</h2>
-      <p class="muted">Books of curtain fabric are in the Naif Road shop: plains, textures, embroidered, blackout-ready and light sheers.</p>
+      <p class="muted">Books of curtain fabric are in the Naif Road shop: plains, textures, embroidered, blackout-ready and light sheers. <a href="<?= e(sabPageHref('catalog')) ?>#curtains">Browse curtain designs in the catalogue</a>.</p>
     </div>
     <div class="catalog-grid">
       <?php foreach ($styles as [$title, $text, $img]): ?>
@@ -72,6 +72,7 @@ $styles = [
     </div>
     <p style="margin-top:32px">
       <a class="btn btn-gold" href="<?= e(sabPageHref('contact') . '?service=' . rawurlencode('Curtains & blinds')) ?>">Request a curtain quote</a>
+      <a class="btn btn-outline" href="<?= e(sabPageHref('catalog')) ?>#curtains">Catalogue</a>
     </p>
   </div>
 </section>

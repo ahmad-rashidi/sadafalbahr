@@ -26,7 +26,7 @@ $designs = [
     <div class="section-head">
       <p class="eyebrow" style="color:var(--gold)">Product designs</p>
       <h2>A wall covering for every room.</h2>
-      <p class="muted">Bring a photo of the space, or visit with measurements. We help you pick a pattern that suits light, furniture and budget.</p>
+      <p class="muted">Bring a photo of the space, or visit with measurements. We help you pick a pattern that suits light, furniture and budget. <a href="<?= e(sabPageHref('catalog')) ?>#wallpaper">Browse wallpaper designs in the catalogue</a>.</p>
     </div>
     <div class="catalog-grid">
       <?php foreach ($designs as [$title, $text, $img]): ?>
@@ -55,7 +55,7 @@ $designs = [
       </ul>
       <p>
         <a class="btn btn-gold" href="<?= e(sabPageHref('contact') . '?service=Wallpaper') ?>">Request a wallpaper quote</a>
-        <a class="btn btn-outline" href="<?= e(sabPageHref('gallery')) ?>">See projects</a>
+        <a class="btn btn-outline" href="<?= e(sabPageHref('catalog')) ?>#wallpaper">Catalogue</a>
       </p>
     </div>
     <img src="https://images.unsplash.com/photo-1615874959474-d609969a20d7?auto=format&fit=crop&w=1200&q=80" alt="Installed wallpaper in a living room">

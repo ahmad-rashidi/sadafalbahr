@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
-Disallow: /storage/
-
-Sitemap: http://localhost/sadafalbahr/sitemap.php
-Sitemap: http://localhost/sadafalbahr/sitemap.xml
+Disallow: /includes/

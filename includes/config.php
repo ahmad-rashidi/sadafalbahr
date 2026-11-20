@@ -12,20 +12,44 @@ const SAB_ADDRESS = 'Dr. Ibrahim Al Marzouqi Building 187, Ground Floor, Naif Ro
 const SAB_HOURS = 'Daily 9:00 AM – 10:00 PM (break 1:30 – 4:30 PM)';
 const SAB_MAPS = 'https://www.google.com/maps/search/?api=1&query=Sadaf+Al+Bahar+Curtains+Naif+Road+Deira+Dubai';
 const SAB_MAPS_EMBED = 'https://maps.google.com/maps?q=Naif%20Road%20Al%20Murar%20Deira%20Dubai&t=&z=16&ie=UTF8&iwloc=&output=embed';
-const SAB_BASE_PATH = '/sadafalbahr';
-const SAB_LIVE_HOSTS = [];
 const SAB_PROJECT_CATEGORIES = ['Wallpaper', 'Curtains', 'Carpets', 'Installation'];
+
+$sab_db_host = 'localhost';
+$sab_db_name = 'sadaf_al_bahr';
+$sab_db_user = 'root';
+$sab_db_pass = '';
+$sab_base_path = null;
+
+$sabLocal = __DIR__ . '/local.php';
+if (is_file($sabLocal)) {
+    require $sabLocal;
+}
+
+function sabDetectedBasePath(): string
+{
+    $doc = str_replace('\\', '/', (string) ($_SERVER['DOCUMENT_ROOT'] ?? ''));
+    $app = str_replace('\\', '/', dirname(__DIR__));
+    $doc = rtrim($doc, '/');
+    $app = rtrim($app, '/');
+    if ($doc !== '' && ($app === $doc || str_starts_with($app, $doc . '/'))) {
+        $rel = substr($app, strlen($doc));
+        $rel = '/' . trim(str_replace('\\', '/', (string) $rel), '/');
+        return $rel === '/' ? '' : $rel;
+    }
+    return '';
+}
 
 function sabBasePath(): string
 {
-    $host = strtolower(preg_replace('/:\d+$/', '', $_SERVER['HTTP_HOST'] ?? ''));
-    foreach (SAB_LIVE_HOSTS as $liveHost) {
-        if ($host === strtolower((string) $liveHost)) {
-            return '';
-        }
+    global $sab_base_path;
+    if ($sab_base_path !== null && $sab_base_path !== '') {
+        $path = trim((string) $sab_base_path, '/');
+        return $path === '' ? '' : '/' . $path;
     }
-    $path = trim(SAB_BASE_PATH, '/');
-    return $path === '' ? '' : '/' . $path;
+    if ($sab_base_path === '') {
+        return '';
+    }
+    return sabDetectedBasePath();
 }
 
 function sabHref(string $path = ''): string

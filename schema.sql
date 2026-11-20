@@ -174,3 +174,62 @@ CREATE TABLE IF NOT EXISTS page_seo (
   priority         VARCHAR(4)   NOT NULL DEFAULT '0.8',
   changefreq       VARCHAR(20)  NOT NULL DEFAULT 'weekly'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS catalog_items (
+  id               INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  category         VARCHAR(20)  NOT NULL,
+  company_name     VARCHAR(160) NOT NULL DEFAULT '',
+  design_name      VARCHAR(180) NOT NULL,
+  slug             VARCHAR(180) NOT NULL UNIQUE,
+  details          TEXT         NOT NULL,
+  price_amount     DECIMAL(10,2) NOT NULL DEFAULT 0,
+  price_unit       VARCHAR(20)  NOT NULL DEFAULT 'metre',
+  meta_title       VARCHAR(180) NOT NULL DEFAULT '',
+  meta_description VARCHAR(320) NOT NULL DEFAULT '',
+  focus_keyword    VARCHAR(120) NOT NULL DEFAULT '',
+  is_published     TINYINT(1)   NOT NULL DEFAULT 1,
+  sort_order       INT          NOT NULL DEFAULT 0,
+  created_at       TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_catalog_pub (is_published, category, sort_order, id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS catalog_images (
+  id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  catalog_id INT UNSIGNED NOT NULL,
+  image_path VARCHAR(255) NOT NULL,
+  design_name VARCHAR(180) NOT NULL DEFAULT '',
+  alt_text   VARCHAR(180) NOT NULL DEFAULT '',
+  caption    VARCHAR(180) NOT NULL DEFAULT '',
+  sort_order INT          NOT NULL DEFAULT 0,
+  CONSTRAINT fk_catalog_images_item
+    FOREIGN KEY (catalog_id) REFERENCES catalog_items(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS catalog_orders (
+  id             INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  catalog_id     INT UNSIGNED DEFAULT NULL,
+  category       VARCHAR(20)  NOT NULL DEFAULT '',
+  company_name   VARCHAR(160) NOT NULL DEFAULT '',
+  design_name    VARCHAR(180) NOT NULL DEFAULT '',
+  pattern_name   VARCHAR(180) NOT NULL DEFAULT '',
+  image_id       INT UNSIGNED DEFAULT NULL,
+  image_path     VARCHAR(255) NOT NULL DEFAULT '',
+  price_amount   DECIMAL(10,2) NOT NULL DEFAULT 0,
+  price_unit     VARCHAR(20)  NOT NULL DEFAULT 'metre',
+  name           VARCHAR(120) NOT NULL,
+  phone          VARCHAR(40)  NOT NULL,
+  email          VARCHAR(160) NOT NULL DEFAULT '',
+  width_value    DECIMAL(10,2) NOT NULL DEFAULT 0,
+  height_value   DECIMAL(10,2) NOT NULL DEFAULT 0,
+  measure_unit   VARCHAR(20)  NOT NULL DEFAULT 'metre',
+  quantity       DECIMAL(10,2) NOT NULL DEFAULT 1,
+  notes          TEXT         NOT NULL,
+  estimate_aed   DECIMAL(12,2) DEFAULT NULL,
+  ip_address     VARCHAR(45)  DEFAULT NULL,
+  is_read        TINYINT(1)   NOT NULL DEFAULT 0,
+  created_at     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_catalog_orders_created (created_at),
+  CONSTRAINT fk_catalog_orders_item
+    FOREIGN KEY (catalog_id) REFERENCES catalog_items(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -3,5 +3,8 @@
 !/assets/img/projects/.gitkeep
 /assets/img/blog/*
 !/assets/img/blog/.gitkeep
+/assets/img/catalog/*
+!/assets/img/catalog/.gitkeep
+/includes/local.php
 .DS_Store
 Thumbs.db

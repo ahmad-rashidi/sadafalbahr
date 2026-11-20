@@ -5,6 +5,14 @@ const SAB_ADMIN_USERNAME = 'admin';
 const SAB_ADMIN_PASSWORD_HASH = '$2y$10$VS9loCiNLVFqhCr9MqgbO.ZpNH9WBqlv.M8UJE4BGYsM4iUAaJtEm';
 
 if (session_status() === PHP_SESSION_NONE) {
+    $secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
+    session_set_cookie_params([
+        'lifetime' => 0,
+        'path' => '/',
+        'secure' => $secure,
+        'httponly' => true,
+        'samesite' => 'Lax',
+    ]);
     session_start();
 }
 

@@ -92,7 +92,7 @@ if (!isset($schema_json)) {
   <header class="site-header" data-header>
     <div class="container header-inner">
       <a class="logo" href="<?= e(sabPageHref('home')) ?>">
-        <span class="logo-mark" aria-hidden="true">ص</span>
+        <img src="<?= e(sabHref('assets/logo/logo-01.png')) ?>" alt="<?= e(SAB_NAME) ?>">
         <span class="logo-text">
           <strong><?= e(SAB_NAME) ?></strong>
           <span class="logo-ar"><?= SAB_NAME_AR ?></span>
@@ -107,6 +107,7 @@ if (!isset($schema_json)) {
         <a href="<?= e(sabPageHref('wallpaper')) ?>" <?= $current === 'wallpaper.php' ? 'aria-current="page"' : '' ?>>Wallpaper</a>
         <a href="<?= e(sabPageHref('curtains')) ?>" <?= $current === 'curtains.php' ? 'aria-current="page"' : '' ?>>Curtains</a>
         <a href="<?= e(sabPageHref('carpets')) ?>" <?= $current === 'carpets.php' ? 'aria-current="page"' : '' ?>>Carpets</a>
+        <a href="<?= e(sabPageHref('catalog')) ?>" <?= $current === 'catalog.php' ? 'aria-current="page"' : '' ?>>Catalogue</a>
         <a href="<?= e(sabPageHref('gallery')) ?>" <?= $current === 'gallery.php' ? 'aria-current="page"' : '' ?>>Projects</a>
         <a href="<?= e(sabPageHref('blog')) ?>" <?= $current === 'blog.php' ? 'aria-current="page"' : '' ?>>Blog</a>
         <a href="<?= e(sabPageHref('about')) ?>" <?= $current === 'about.php' ? 'aria-current="page"' : '' ?>>About Us</a>

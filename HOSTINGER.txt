@@ -1,0 +1,45 @@
+Sadaf Al Bahr — upload to Hostinger
+===================================
+
+PHP version: 8.1 or newer (hPanel → Advanced → PHP Configuration)
+
+1. Create a MySQL database
+   hPanel → Databases → MySQL Databases
+   Note the database name, username, and password (Hostinger prefixes them).
+
+2. Import tables
+   phpMyAdmin → select your new database → Import → schema-hostinger.sql
+   (Do not import schema.sql — that file tries to CREATE DATABASE and will fail on Hostinger.)
+
+3. Database login file
+   Copy includes/local.example.php to includes/local.php
+   Put your Hostinger database name, user, and password in it.
+   Leave $sab_base_path = null;
+   If the site is the main domain (files inside public_html), that is correct.
+
+4. Upload files
+   File Manager or FTP: upload everything into public_html
+   (index.php, .htaccess, .user.ini, admin, assets, includes, …)
+   Do not upload the whole folder as public_html/sadafalbahr unless you want
+   the site at yourdomain.com/sadafalbahr/
+
+5. Folders that must be writable
+   assets/img/catalog
+   assets/img/projects
+   assets/img/blog
+   Set permission 755 (or 775 if uploads fail).
+
+6. SSL
+   hPanel → SSL → enable HTTPS. Point the domain at this hosting.
+
+7. Admin
+   yourdomain.com/admin/login.php
+   Username: admin
+   Password: sadaf2026
+   Change this after the site is live.
+
+8. Check
+   Homepage loads
+   Catalogue, contact form, and /admin work
+   Pretty URLs: /wallpaper /catalog /contact
+   If you see a 500 error, rename .htaccess briefly to test, and confirm PHP 8.1+.

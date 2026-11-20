@@ -11,7 +11,7 @@ require __DIR__ . '/includes/header.php';
     <p>Wallpaper, carpets, curtains with professional fixing, and decoration — measured, made and installed from our shop on Naif Road.</p>
     <div class="hero-actions">
       <a class="btn btn-gold" href="<?= e(sabPageHref('contact')) ?>">Ask for a visit</a>
-      <a class="btn btn-ghost" href="<?= e(sabPageHref('gallery')) ?>">See our projects</a>
+      <a class="btn btn-ghost" href="<?= e(sabPageHref('catalog')) ?>">Browse the catalogue</a>
     </div>
   </div>
 </section>

@@ -16,7 +16,7 @@ if ($slug === '' || !preg_match('/^[a-z0-9-]+$/', $slug)) {
 
 $row = sab_page_seo_by_slug($pdo, $slug);
 $file = $row ? basename((string) $row['php_file']) : '';
-$allowed = ['index.php', 'wallpaper.php', 'curtains.php', 'carpets.php', 'gallery.php', 'blog.php', 'about.php', 'contact.php'];
+$allowed = ['index.php', 'wallpaper.php', 'curtains.php', 'carpets.php', 'catalog.php', 'gallery.php', 'blog.php', 'about.php', 'contact.php'];
 $path = __DIR__ . '/' . $file;
 
 if (!$row || !in_array($file, $allowed, true) || !is_file($path)) {

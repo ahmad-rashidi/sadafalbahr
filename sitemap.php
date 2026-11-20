@@ -17,6 +17,16 @@ foreach (sab_page_seo_all($pdo) as $page) {
     echo '  <url><loc>' . htmlspecialchars($loc) . '</loc><changefreq>' . $freq . '</changefreq><priority>' . $prio . '</priority></url>' . "\n";
 }
 
+foreach (sab_catalog_public($pdo) as $item) {
+    $loc = sabAbsolute('catalog/' . $item['slug']);
+    $last = substr((string) ($item['updated_at'] ?? ''), 0, 10);
+    echo '  <url><loc>' . htmlspecialchars($loc) . '</loc>';
+    if ($last) {
+        echo '<lastmod>' . htmlspecialchars($last) . '</lastmod>';
+    }
+    echo '<changefreq>weekly</changefreq><priority>0.8</priority></url>' . "\n";
+}
+
 foreach (sab_projects_public($pdo) as $project) {
     $loc = sabAbsolute('project/' . $project['slug']);
     $last = substr((string) ($project['updated_at'] ?? ''), 0, 10);

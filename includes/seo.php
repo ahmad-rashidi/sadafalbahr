@@ -53,6 +53,18 @@ function sab_seo_pages_seed(): array
             'changefreq' => 'weekly',
         ],
         [
+            'page_key' => 'catalog',
+            'label' => 'Catalogue',
+            'php_file' => 'catalog.php',
+            'slug' => 'catalog',
+            'meta_title' => 'Catalogue | Wallpaper, Curtains & Carpet Designs | Sadaf Al Bahr',
+            'meta_description' => 'Browse wallpaper, curtain and carpet designs from supplier catalogues at Sadaf Al Bahr on Naif Road, Dubai. Choose a design and place a custom size order.',
+            'focus_keyword' => 'wallpaper curtain carpet catalogue Dubai',
+            'robots' => 'index,follow',
+            'priority' => '0.9',
+            'changefreq' => 'weekly',
+        ],
+        [
             'page_key' => 'gallery',
             'label' => 'Projects / Gallery',
             'php_file' => 'gallery.php',
@@ -134,7 +146,7 @@ function sab_ensure_seo_tables(PDO $pdo): void
 
 function sab_page_seo_all(PDO $pdo): array
 {
-    return $pdo->query("SELECT * FROM page_seo ORDER BY FIELD(page_key, 'home','wallpaper','curtains','carpets','gallery','blog','about','contact'), page_key")->fetchAll();
+    return $pdo->query("SELECT * FROM page_seo ORDER BY FIELD(page_key, 'home','wallpaper','curtains','carpets','catalog','gallery','blog','about','contact'), page_key")->fetchAll();
 }
 
 function sab_page_seo(PDO $pdo, string $key): ?array
@@ -160,6 +172,7 @@ function sab_script_page_key(): ?string
         'wallpaper.php' => 'wallpaper',
         'curtains.php' => 'curtains',
         'carpets.php' => 'carpets',
+        'catalog.php' => 'catalog',
         'gallery.php' => 'gallery',
         'blog.php' => 'blog',
         'about.php' => 'about',
@@ -186,6 +199,7 @@ function sabPageHref(string $key): string
         'wallpaper' => 'wallpaper.php',
         'curtains' => 'curtains.php',
         'carpets' => 'carpets.php',
+        'catalog' => 'catalog.php',
         'gallery' => 'gallery.php',
         'blog' => 'blog.php',
         'about' => 'about.php',
