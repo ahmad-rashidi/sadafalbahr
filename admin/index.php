@@ -29,6 +29,9 @@ $rows = $pdo->query('SELECT * FROM inquiries ORDER BY created_at DESC, id DESC')
     <div class="top">
       <h1>Inquiries</h1>
     </div>
+    <div class="welcome">
+      <p><strong>New here?</strong> Open the <a href="guide.php">Guide</a> first. That page shows how to add catalogues, blog posts, project photos, and SEO. Then come back here to answer customer messages.</p>
+    </div>
     <?php if (!$rows): ?>
       <p>No messages yet.</p>
     <?php else: ?>

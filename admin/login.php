@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="wrap">
     <div class="box">
       <h1>Sadaf Al Bahr admin</h1>
+      <p class="hint">After you log in, open <strong>Guide</strong> in the top menu. It explains catalogues, blog, photos, and SEO.</p>
       <?php if ($error): ?><p class="err"><?= htmlspecialchars($error) ?></p><?php endif; ?>
       <form method="post">
         <label>Username <input name="username" autocomplete="username" required></label>

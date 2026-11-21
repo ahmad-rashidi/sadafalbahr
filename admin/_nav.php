@@ -10,6 +10,9 @@ $admin_page = basename($_SERVER['SCRIPT_NAME'] ?? '');
     <a href="orders.php" <?= $admin_page === 'orders.php' ? 'aria-current="page"' : '' ?>>Orders</a>
     <a href="blog.php" <?= in_array($admin_page, ['blog.php', 'blog-edit.php'], true) ? 'aria-current="page"' : '' ?>>Blog</a>
     <a href="seo.php" <?= in_array($admin_page, ['seo.php'], true) ? 'aria-current="page"' : '' ?>>SEO</a>
+    <a href="guide.php" <?= $admin_page === 'guide.php' ? 'aria-current="page"' : '' ?>>Guide</a>
+    <a href="<?= htmlspecialchars('../') ?>" target="_blank" rel="noopener">View site</a>
     <a href="logout.php">Log out</a>
   </nav>
 </div>
+<script src="admin.js" defer></script>
